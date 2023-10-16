@@ -1,0 +1,11 @@
+<%#= render "public/shared/header" %>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.with_tax_price %>
+
+<%= form_with model:@cart_item_new, url: public_cart_items_path, local:true do |f| %>
+　<%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.submit :"カートに追加" %>
+<% end %>
+

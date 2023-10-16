@@ -1,0 +1,15 @@
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<% end %>
+
+  <header>
+    <% if admin_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "ログイン", new_admin_session_path %>
+      </li>
+    <% end %>
+  </header>

@@ -1,0 +1,11 @@
+<div>
+  <h3><%= @customer.last_name %><%= @customer.first_name %></h3>
+  <h3><%= @customer.last_name_kana %><%= @customer.first_name_kana %></h3>
+  <h3>〒<%= @customer.postal_code %></h3>
+  <h3><%= @customer.address %></h3>
+  <h3><%= @customer.telephone_number %></h3>
+  <h3><%= @customer.email %></h3>
+  <p><%= link_to "編集" ,edit_public_customer_path(@customer.id) %></p>
+  <%= link_to "退会", public_customers_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+</div>
+

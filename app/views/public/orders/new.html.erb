@@ -1,0 +1,41 @@
+<%= form_with model: @order, url: public_orders_confirm_path do |f| %>
+<% if @order.errors.any? %>
+  <%= @order.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<h3>支払い方法</h3>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_card, "クレジットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %>
+
+<h3>お届け先</h3>
+<p><%= f.radio_button :select_address, "0" %>自身の住所</p>
+<%= current_customer.address %>
+
+<p><%= f.radio_button :select_address, "1" %>新しいお届け先</p>
+
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+  </table>
+
+  <%= f.submit "確認画面へ進む" %>
+  
+
+<% end %>
