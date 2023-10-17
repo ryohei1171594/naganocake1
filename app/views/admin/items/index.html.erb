@@ -6,10 +6,8 @@
   <span><%= link_to item.name, admin_item_path(item.id) %></span>
   
   <p>イメージ</p>
-  <% if item.image.attached? %>
-    <%= link_to image_tag item.image, size: "50x50" %>
-  <% else %>
-    <%= link_to image_tag("no_image.jpeg"), admin_item_path(item.id) %>
+  <%= link_to admin_item_path(item.id)  do %>
+    <%= image_tag item.get_item_image(100,100) %>
   <% end %>
   
 <% end %>
