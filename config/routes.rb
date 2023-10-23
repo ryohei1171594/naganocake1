@@ -13,8 +13,8 @@ namespace :public do
     get 'homes/top'
     get 'homes/about'
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :customers
     get'customers/mypage', :to =>'customers#show'
+    resources :customers
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
